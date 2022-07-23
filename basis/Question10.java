@@ -9,24 +9,29 @@ public class Question10 {
 		String input = scanner.nextLine();
 
 		try {
-			Integer.parseInt(input);
+			int num = Integer.parseInt(input);
+			//入力された値が整数
+			printCalculateDouble(num);
+			printCalculateSquare(num);
+
 		} catch (NumberFormatException e) {
+			//入力された値が整数以外
 			System.out.println("整数以外の値が入力されました");
 			return;
 		}
-		int num = Integer.parseInt(input);
-		printCalculateDouble(num);
-		printCalculateSquare(num);
+
 	}
 
 	public static void printCalculateDouble(int num) {
-		int ansDou = num * 2;
-		System.out.println("入力された" + num + "を2倍した値は" + ansDou + "です");
+		int ansDouble = num * 2;
+		//引数を2倍した結果を出力する
+		System.out.println("入力された" + num + "を2倍した値は" + ansDouble + "です");
 	}
 
 	public static void printCalculateSquare(int num) {
-		int ansSqu = num * num;
-		System.out.println("入力された" + num + "を2乗した値は" + ansSqu + "です");
+		int ansSquare = num * num;
+		//引数を2乗した結果を出力する
+		System.out.println("入力された" + num + "を2乗した値は" + ansSquare + "です");
 	}
 
 }
