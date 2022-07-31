@@ -1,4 +1,5 @@
-package basisQ12;
+package basis.Question12;
+
 /**
  * java基礎 Question12 Personクラス
  * @author Your name
