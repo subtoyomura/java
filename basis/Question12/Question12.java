@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Question12 {
 	public static void main(String[] args) {
 
-		//Person型の変数personをnullで初期化
+		//Personクラスからインスタンス生成、変数personに代入
 		Person person = new Person();
 
 		// メッセージ出力
@@ -15,7 +15,7 @@ public class Question12 {
 
 		//try -with-resources文(Scanner定義)
 		try (Scanner scanner = new Scanner(System.in)) {
-			//String型の変数inputNumberを""で初期化
+			//キーボードから入力された文字列（選択）を代入用の変数定義
 			String inputNumber = "";
 			// キーボードから文字列読込(選択）
 			inputNumber = scanner.nextLine();
@@ -26,16 +26,13 @@ public class Question12 {
 				// メッセージ出力
 				System.out.println("氏名を入力してください");
 				System.out.print("氏名：");
-				//String型の変数inputNameを""で初期化
+				//キーボードから入力された文字列（名前）を代入用の変数定義
 				String inputName = "";
 				// キーボードから文字列読込(名前）
 				inputName = scanner.nextLine();
 				// 変数personにセッターでinputNameを渡す
 				person.setName(inputName);
 				//2の場合（何もしない）
-			} else if (num == 2) {
-				;
-				//1か2以外を選択した場合
 			} else if (num < 1 || 2 < num) {
 				// メッセージ出力
 				System.out.println("1～2の範囲で入力してください");
@@ -46,7 +43,6 @@ public class Question12 {
 		} catch (NumberFormatException e) {// 整数以外の値が入力された場合
 			// メッセージ出力
 			System.out.println("整数以外の値が入力されました");
-
 		}
 	}
 }
