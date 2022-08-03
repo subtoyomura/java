@@ -32,7 +32,7 @@ public class Question12 {
 				inputName = scanner.nextLine();
 				// 変数personにセッターでinputNameを渡す
 				person.setName(inputName);
-				//2の場合（何もしない）
+				//1,2以外の場合
 			} else if (num < 1 || 2 < num) {
 				// メッセージ出力
 				System.out.println("1～2の範囲で入力してください");
