@@ -40,7 +40,7 @@ public class Question13 {
 				CalculateChild CalculateChild = new CalculateChild(num1, num2);
 				CalculateChild.flow();
 				//1、2の以外の場合
-			} else if (number < 1 || 2 < number) {
+			} else {
 				// メッセージ出力
 				System.out.println("1～2の範囲で入力してください");
 				return;
