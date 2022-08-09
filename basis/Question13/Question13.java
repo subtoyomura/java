@@ -16,7 +16,10 @@ public class Question13 {
 			String inputText = scanner.nextLine();
 			// 入力文字列をint型へ変換
 			int number = Integer.parseInt(inputText);
-
+			if ((number < 1 || 2 < number)) {
+				System.out.println("1～2の範囲で入力してください");
+				return;
+			}
 			// メッセージ出力
 			System.out.println("整数を入力してください");
 			System.out.print("1個目：");
@@ -33,18 +36,15 @@ public class Question13 {
 
 			//1の場合（足し算結果⇒引き算結果）
 			if (number == 1) {
-				CalculateSuper CalculateSuper = new CalculateSuper(num1, num2);
-				CalculateSuper.flow();
+				CalculateSuper calculateSuper = new CalculateSuper(num1, num2);
+				calculateSuper.flow();
 				//2の場合（引き算結果⇒足し算結果）
-			} else if (number == 2) {
-				CalculateChild CalculateChild = new CalculateChild(num1, num2);
-				CalculateChild.flow();
-				//1、2の以外の場合
 			} else {
-				// メッセージ出力
-				System.out.println("1～2の範囲で入力してください");
-				return;
+				CalculateChild calculateChild = new CalculateChild(num1, num2);
+				calculateChild.flow();
+				//1、2の以外の場合
 			}
+
 		} catch (NumberFormatException e) {//整数以外の値が入力された場合
 			// メッセージ出力
 			System.out.println("整数以外の値が入力されました");

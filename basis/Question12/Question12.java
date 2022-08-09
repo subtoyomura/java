@@ -2,7 +2,9 @@ package basis.Question12;
 
 import java.util.Scanner;
 
+
 public class Question12 {
+
 	public static void main(String[] args) {
 
 		//Personクラスからインスタンス生成、変数personに代入
