@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping()
 public class TestController {
 
-	@GetMapping("view")
+@GetMapping("test")
 	public String helloView(Model view) {
 		view.addAttribute("msg" , "Hello World");
 		return "test";
