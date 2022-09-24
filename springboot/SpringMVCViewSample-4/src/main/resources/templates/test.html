@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>ユーザー一覧</h1>
+	<table border="1">
+		<tr>
+			<th>ユーザーID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+		</tr>
+		<tr th:each="users:${userslist}">
+			<td th:text="${users.id}"></td>
+			<td th:text="${users.name}"></td>
+			<td th:text="${users.email}"></td>
+		</tr>
+	</table>
+</body>
+</html>
