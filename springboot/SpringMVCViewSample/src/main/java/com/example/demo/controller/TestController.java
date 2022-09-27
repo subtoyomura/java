@@ -9,22 +9,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
-
-
 @Controller
 public class TestController {
 
-
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
-	List<Map<String, Object>> list = jdbcTemplate.queryForList("select * from users");
+	/**
+	 * コンストラクタ
+	 * @param jdbcTemplate JdbcTemplate
+	 */
+	@Autowired
+	public void UserDaoImpl(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 
 	@GetMapping("/test")
-	public String model(Model view) {
+	public String test(Model view) {
+		List<Map<String, Object>> list = jdbcTemplate.queryForList("select * from users");
+		System.out.println(list);
 		view.addAttribute("listTest",list);
 
 		return "test";
-}
+	}
 }
