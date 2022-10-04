@@ -1,23 +1,26 @@
 package com.example.demo.service;
 
 
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
 
 @Service
 public class UserServiceImpl implements UserService {
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+
+	private UserDao userDao;
+
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
+	}
 
 
 	public List<User> getAll(){
-	List<User> list = ((UserService) jdbcTemplate).getAll();
-	return list;
+		return userDao.findAll();
 	}
 
 
