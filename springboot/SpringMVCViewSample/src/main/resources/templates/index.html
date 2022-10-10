@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+      <a class="navbar-brand" >Simple Board</a>
+    <button type="button" class="btn btn-primary" href="#">つぶやき登録</button>
+  </div>
+</nav>
+
+
+	<h1>タイムライン</h1>
+	<table class="table">
+  <thead class="thead-lignt">
+    <tr>			<th>ユーザーID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th></tr>
+  </thead>		<tr th:each="user:${users}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.title}"></td>
+			<td th:text="${user.content}"></td>
+
+		</tr>
+</table>
+
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
