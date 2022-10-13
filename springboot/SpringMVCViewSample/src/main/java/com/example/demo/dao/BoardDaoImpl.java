@@ -1,17 +1,18 @@
 package com.example.demo.dao;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Board;
 
+@Repository
 public class BoardDaoImpl implements BoardDao {
-	private final JdbcTemplate jdbcTemplate;
+	private  JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	public BoardDaoImpl(JdbcTemplate jdbcTemplate) {
@@ -28,7 +29,7 @@ public class BoardDaoImpl implements BoardDao {
 			user.setId((int)result.get("id"));
 			user.setTitle((String)result.get("title"));
 			user.setContent((String)result.get("content"));
-			user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
+			//user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
 			//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
 	        users.add(user);
 		}
