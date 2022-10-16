@@ -35,6 +35,17 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		return users;
 	}
+	@Override
+	public Board findByld(int getId) {
+		 Map<String, Object> map = jdbcTemplate.queryForMap("SELECT * FROM boards" + " WHERE id = ?", getId);
+		 Board user = new Board();
+		 user.setId((int)map.get("id"));
+			user.setTitle((String)map.get("title"));
+			user.setContent((String)map.get("content"));
+			//user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
+			//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
+return user;
+	}
 	}
 
 

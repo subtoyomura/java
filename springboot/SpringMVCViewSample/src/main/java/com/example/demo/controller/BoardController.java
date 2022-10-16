@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.example.demo.entity.Board;
 import com.example.demo.service.BoardService;
@@ -27,9 +28,9 @@ public class BoardController {
 		return "index";
 	}
 	@GetMapping("/board/show/{id}")
-	public String test2(Model view) {
-		List<Board> users = boardService.getAll();
-		view.addAttribute("users",users);
+	public String test2(@ModelAttribute int getId,Model view) {
+		Board user = boardService.getBoard(getId);
+		view.addAttribute("users",user);
 		return "show";
 
 	}

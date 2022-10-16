@@ -7,5 +7,6 @@ public interface BoardDao<Board> {
 
 
 	List<Board> findAll();
+	Board findByld(int getId);
 
 }
