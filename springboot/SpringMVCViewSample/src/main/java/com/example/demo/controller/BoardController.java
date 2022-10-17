@@ -6,12 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Board;
 import com.example.demo.service.BoardService;
 
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 
 	private BoardService boardService;
@@ -21,14 +23,14 @@ public class BoardController {
 
 
 
-	@GetMapping("/board/index")
-	public String test(Model view) {
-		List<Board> users = boardService.getAll();
-		view.addAttribute("users",users);
+	@GetMapping("/index")
+	public String index(Model view) {
+		List<Board> boards = boardService.getAll();
+		view.addAttribute("boards",boards);
 		return "index";
 	}
-	@GetMapping("/board/show/{id}")
-	public String test2(@ModelAttribute int getId,Model view) {
+	@GetMapping("/show/{id}")
+	public String show(@ModelAttribute int getId,Model view) {
 		Board user = boardService.getBoard(getId);
 		view.addAttribute("users",user);
 		return "show";

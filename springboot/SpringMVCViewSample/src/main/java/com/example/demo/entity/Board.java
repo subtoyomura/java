@@ -1,13 +1,13 @@
 package com.example.demo.entity;
-	import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 public class Board {
 
 
-		private int id;
-		private String title;
-		private String content;
-		private LocalDateTime createdAt;
-		private LocalDateTime updatedAt;
+	private int id;
+	private String title;
+	private String content;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 
 	public Board() {
 
@@ -51,5 +51,5 @@ public class Board {
 		this.updatedAt = updatedAt;
 	}
 
-	}
+}
 

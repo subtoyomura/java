@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,23 +30,23 @@ public class BoardDaoImpl implements BoardDao {
 			user.setId((int)result.get("id"));
 			user.setTitle((String)result.get("title"));
 			user.setContent((String)result.get("content"));
-			//user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
-			//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
-	        users.add(user);
+			user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
+			user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
+			users.add(user);
 		}
 		return users;
 	}
 	@Override
 	public Board findByld(int getId) {
-		 Map<String, Object> map = jdbcTemplate.queryForMap("SELECT * FROM boards" + " WHERE id = ?", getId);
-		 Board user = new Board();
-		 user.setId((int)map.get("id"));
-			user.setTitle((String)map.get("title"));
-			user.setContent((String)map.get("content"));
-			//user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
-			//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
-return user;
+		Map<String, Object> map = jdbcTemplate.queryForMap("SELECT * FROM boards" + " WHERE id = ?", getId);
+		Board user = new Board();
+		user.setId((int)map.get("id"));
+		user.setTitle((String)map.get("title"));
+		user.setContent((String)map.get("content"));
+		//user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
+		//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
+		return user;
 	}
-	}
+}
 
 
