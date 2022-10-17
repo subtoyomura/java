@@ -24,17 +24,17 @@ public class BoardDaoImpl implements BoardDao {
 	public List<Board> findAll() {
 		String sql ="select * from boards";
 		List<Map<String,Object>>results = jdbcTemplate.queryForList(sql);
-		List<Board> users = new ArrayList<Board>();
+		List<Board> boards = new ArrayList<Board>();
 		for(Map<String,Object>result:results) {
-			Board user = new Board();
-			user.setId((int)result.get("id"));
-			user.setTitle((String)result.get("title"));
-			user.setContent((String)result.get("content"));
-			user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
-			user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
-			users.add(user);
+			Board board = new Board();
+			board.setId((int)result.get("id"));
+			board.setTitle((String)result.get("title"));
+			board.setContent((String)result.get("content"));
+			board.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
+			board.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
+			boards.add(board);
 		}
-		return users;
+		return boards;
 	}
 	@Override
 	public Board findByld(int getId) {

@@ -35,14 +35,14 @@
 				</tr>
 			</thead>
 			<tr th:each="board:${boards}">
-				<td th:text="${board.title}"></td>
-				<td th:text="${board.content}"></td>
+				<td style="vertical-align: middle" th:text="${board.title}"></td>
+				<td style="vertical-align: middle" th:text="${board.content}"></td>
 
-				<td style="text-align: center"
+				<td style="vertical-align: middle;text-align: center"
 					th:text="|${#temporals.format(board.updatedAt, 'yyyy/M/d h:mm')}"></td>
 
-				<td><button type="button" class="btn btn-outline-info"
-						href="http://localhost:8080/board/show/{id}">詳細</button></td>
+				<td class="mx-auto"><button type="button" class="btn btn-outline-info"
+						href="http://localhost:8080/board/show/{id}">みる</button></td>
 
 			</tr>
 		</table>
