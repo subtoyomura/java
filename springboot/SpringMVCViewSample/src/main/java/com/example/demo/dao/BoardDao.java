@@ -2,7 +2,9 @@ package com.example.demo.dao;
 
 import java.util.List;
 
-public interface BoardDao<Board> {
+import com.example.demo.entity.Board;
+
+public interface BoardDao {
 
 
 
