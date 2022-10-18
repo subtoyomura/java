@@ -10,26 +10,29 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<nav class="navbar navber-light p-3 mb-2 bg-secondary">
+		<div class="container-fluid">
+			<a class="navbar-brand text-white">Simple Board</a>
+			<button type="button" class="btn btn-primary">つぶやき登録</button>
+		</div>
+	</nav>
 	<div class="container">
-		<nav class="navbar navber-light p-3 mb-2 bg-secondary">
-			<div class="container-fluid">
-				<a class="navbar-brand text-white">Simple Board</a>
-				<button type="button" class="btn btn-primary">つぶやき登録</button>
-			</div>
-		</nav>
 		<h1 class="text-center m-5">つぶやき詳細</h1>
-		<div th:object="${users}">
+		<div th:object="${shows}">
 			<div class="mb-3 col-md-3">
-				<label for="exampleFormControlInput1" class="form-label">タイトル</label>
-				<input type="text" th:field="${users.id}">
+				<label for="exampleFormControlInput1" class="form-label">タイトル</label><br>
+				<input type="text" th:field="${shows.title}">
 			</div>
 			<div class="mb-3">
 				<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="3"></textarea>
+					rows="3" th:field="${shows.content}"></textarea>
 			</div>
 
-			<button type="button" class="btn btn-secondary">一覧に戻る</button>
+			<button type="button" class="btn btn-secondary">
+				<a th:href="@{/board/index}">一覧に戻る</a>
+			</button>
 			<button type="button" class="btn btn-primary">編集</button>
 			<button type="button" class="btn btn-danger">削除</button>
 			<script

@@ -19,8 +19,8 @@ public class BoardServiceImpl implements BoardService {
 	public List<Board> getAll(){
 		return boardDao.findAll();
 	}
-	public Board getBoard(int getId) {
-		return (Board) boardDao.findByld(getId);
+	public Board getBoard(int id) {
+		return (Board) boardDao.findByld(id);
 	}
 
 
