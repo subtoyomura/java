@@ -38,14 +38,14 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	@Override
 	public Board findByld(int id) {
-		Map<String, Object> map = jdbcTemplate.queryForMap("SELECT * FROM boards" + " WHERE id = ?", id);
-		Board show = new Board();
-		show.setId((int)map.get("id"));
-		show.setTitle((String)map.get("title"));
-		show.setContent((String)map.get("content"));
+		Map<String, Object> map = jdbcTemplate.queryForMap("SELECT * FROM boards WHERE id = ?", id);
+		Board board = new Board();
+		board.setId((int)map.get("id"));
+		board.setTitle((String)map.get("title"));
+		board.setContent((String)map.get("content"));
 		//user.setCreatedAt(((Timestamp)result.get("created_at")).toLocalDateTime());
 		//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
-		return show;
+		return board;
 	}
 }
 

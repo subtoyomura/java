@@ -21,8 +21,6 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 
-
-
 	@GetMapping("/index")
 	public String index(Model view) {
 		List<Board> boards = boardService.getAll();
@@ -31,10 +29,8 @@ public class BoardController {
 	}
 	@GetMapping("/show/{id}")
 	public String show(@PathVariable  int id,Model view) {
-		Board show = boardService.getBoard(id);
-		view.addAttribute("shows",show);
+		Board board = boardService.getBoard(id);
+		view.addAttribute("board",board);
 		return "show";
-
 	}
-
 }

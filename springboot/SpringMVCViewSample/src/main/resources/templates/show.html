@@ -19,19 +19,19 @@
 	</nav>
 	<div class="container">
 		<h1 class="text-center m-5">つぶやき詳細</h1>
-		<div th:object="${shows}">
+		<div th:object="${board}">
 			<div class="mb-3 col-md-3">
 				<label for="exampleFormControlInput1" class="form-label">タイトル</label><br>
-				<input type="text" th:field="${shows.title}">
+				<input type="text" th:field="${board.title}">
 			</div>
 			<div class="mb-3">
 				<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="3" th:field="${shows.content}"></textarea>
+					rows="3" th:field="${board.content}"></textarea>
 			</div>
 
-			<button type="button" class="btn btn-secondary">
-				<a th:href="@{/board/index}">一覧に戻る</a>
+
+			<a th:href="@{/board/index}" class="btn btn-secondary" role="button">一覧に戻る</a>
 			</button>
 			<button type="button" class="btn btn-primary">編集</button>
 			<button type="button" class="btn btn-danger">削除</button>

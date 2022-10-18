@@ -41,10 +41,8 @@
 				<td style="vertical-align: middle; text-align: center"
 					th:text="|${#temporals.format(board.updatedAt, 'yyyy/M/d h:mm')}"></td>
 
-				<td class="mx-auto"><button type="button"
-						class="btn btn-outline-info">
-						<a th:href="@{/board/show/{id}(id=*{id})}">みる</a>
-					</button></td>
+				<td style="vertical-align: middle; text-align: center"><a th:href="@{/board/show/{id}(id=*{id})}"
+					class="btn btn-outline-info" role="button">みる</a></td>
 
 			</tr>
 		</table>
