@@ -47,6 +47,19 @@ public class BoardDaoImpl implements BoardDao {
 		//user.setUpdatedAt(((Timestamp)result.get("updated_at")).toLocalDateTime());
 		return board;
 	}
-}
+
+	@Override
+	public void insert(Board board) {
+		jdbcTemplate.update("INSERT INTO boards "
+				+ "(id,title, content,created_at,updated_at)"
+				+ "Values(?,?,?,?,?)",
+				    board.getId(),
+	                board.getTitle(),
+	                board.getContent(),
+	                board.getCreatedAt(),
+	                board.getUpdatedAt());
+	    }
+	}
+
 
 
