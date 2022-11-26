@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.controller.BoardForm;
 import com.example.demo.entity.Board;
 
 @Repository
@@ -53,13 +54,24 @@ public class BoardDaoImpl implements BoardDao {
 		jdbcTemplate.update("INSERT INTO boards "
 				+ "(id,title, content,created_at,updated_at)"
 				+ "Values(?,?,?,?,?)",
-				    board.getId(),
-	                board.getTitle(),
-	                board.getContent(),
-	                board.getCreatedAt(),
-	                board.getUpdatedAt());
-	    }
+				board.getId(),
+				board.getTitle(),
+				board.getContent(),
+				board.getCreatedAt(),
+				board.getUpdatedAt());
 	}
+	@Override
+	public void update(BoardForm boardForm) {
+		jdbcTemplate.update("INSERT INTO boards "
+				+ "(id,title, content)"
+				+ "Values(?,?,?)",
+				//boardForm.getId(),
+				boardForm.getTitle(),
+				boardForm.getContent());
+		//board.getCreatedAt(),
+		// board.getUpdatedAt());
+	}
+}
 
 
 

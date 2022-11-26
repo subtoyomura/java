@@ -13,31 +13,39 @@
 
 	<nav class="navbar navber-light p-3 mb-2 bg-secondary">
 		<div class="container-fluid">
-			<a class="navbar-brand text-white">Simple Board</a>
-			<a class="btn btn-primary" role="button">つぶやき登録</a>
+			<a class="navbar-brand text-white">Simple Board</a> <a
+				class="btn btn-primary" role="button">つぶやき登録</a>
 		</div>
 	</nav>
 	<div class="container">
 		<h1 class="text-center m-5">つぶやき登録</h1>
-		<from method="post" th:action="@{/board/create/confirm}" th:object="${boardForm}">
+
+		<form th:action="@{/board/create/confirm}" method="post"
+			th:object="${boardForm}">
 			<div class="mb-3 col-md-3">
 				<label for="exampleFormControlInput1" class="form-label">タイトル</label><br>
-				<input type="text" th:field="*{title}" >
+				<input type="text" class="form-control"
+					id="exampleFormControlInput1" th:field="*{title}" /> <span
+					th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+					style="color: red"></span>
+
 			</div>
 			<div class="mb-3">
 				<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="3"></textarea> <input type="text" th:field="*{content}">
+				<textarea input type="text" class="form-control"
+					id="exampleFormControlTextarea1" rows="3" th:field="*{content}" />
+				<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+					style="color: red"></span>
 			</div>
 
 
 			<a th:href="@{/board/index}" class="btn btn-secondary" role="button">一覧に戻る</a>
-			<a th:href="@{/board/creat/confirm}" class="btn btn-primary" role="button">つぶやき確認</a>
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-				crossorigin="anonymous" defer></script>
-		</from>
+			<button type="submit" class="btn btn-primary">つぶやき確認</button>
+		</form>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+			crossorigin="anonymous" defer></script>
 	</div>
 </body>
 </html>

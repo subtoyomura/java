@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Board;
 import com.example.demo.service.BoardService;
@@ -38,15 +39,32 @@ public class BoardController {
 	}
 
 	@GetMapping("/create")
-	public String create(Model view) {
+	public String create(BoardForm boardForm, Model view) {
 		return "create";
 	}
 
-	 @PostMapping("/create/confirm")
-	    public String createConfirm(@Validated BoardForm boardForm, BindingResult result, Model view) {
-		 if(result.hasErrors()) {
-	        return "create";
-	    }
-	 return"create_confirm";
+	@PostMapping("/create/confirm")
+	public String createConfirm(@Validated BoardForm boardForm, BindingResult result, Model view) {
+		if(result.hasErrors()) {
+			return "create";
+		}
+		return"create_confirm";
+	}
+	@PostMapping("/")
+	public String store(@Validated BoardForm boardForm,
+			BindingResult result,
+			Model view,
+			RedirectAttributes redirectAttributes) {
+
+		if(result.hasErrors()) {
+			view.addAttribute("title", "Inquiry Form");
+			return "/create_confirm";
+		}
+
+		boardService.saveer(boardForm);
+
+		redirectAttributes.addFlashAttribute("store", "つぶやきの登録に成功しました");
+
+		return "redirect:/board/index";
 	}
 }

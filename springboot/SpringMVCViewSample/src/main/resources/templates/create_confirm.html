@@ -18,26 +18,52 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h1 class="text-center m-5">つぶやき登録</h1>
-		<from method="post" th:action="@{/board/create/confirm}" th:object="${boardForm}">
+		<h1 class="text-center m-5">つぶやき登録確認</h1>
+		<form method="post" th:action="@{/board/index}"
+			th:object="${boardForm}">
 			<div class="mb-3 col-md-3">
 				<label for="exampleFormControlInput1" class="form-label">タイトル</label><br>
-				<input type="text" th:text="${boardForm.title}">
+				<textarea class="form-control" id="exampleFormControlInput1"
+					rows="1" type="text" th:text="*{title}"
+					aria-label="Disabled input example" disabled readonly></textarea>
 			</div>
 			<div class="mb-3">
 				<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1"
-					rows="3" input type="text" th:text="${boardForm.content}"></textarea>
+					rows="3" th:text="*{content}" aria-label="Disabled input example"
+					disabled readonly></textarea>
 			</div>
 
 
-			<a th:href="@{/board/index}" class="btn btn-secondary" role="button">一覧に戻る</a>
-			<a th:href="@{/board/index}" class="btn btn-primary" role="button">つぶやき確認</a>
+			<a th:href="@{/board/create}" class="btn btn-secondary" role="button">戻る</a>
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#exampleModal">登録</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">つぶやき登録確認</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">つぶやき登録しますか？</div>
+						<div class="modal-footer">
+							<button type="button" onclick="history.back()"
+								class="btn btn-secondary">戻る</button>
+							<button type="submit" class="btn btn-secondary">登録</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 				crossorigin="anonymous" defer></script>
-		</from>
+		</form>
 	</div>
 </body>
 </html>

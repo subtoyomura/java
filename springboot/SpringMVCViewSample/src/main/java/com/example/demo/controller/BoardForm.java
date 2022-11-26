@@ -14,28 +14,28 @@ import javax.validation.constraints.Size;
 		  @Size(max = 140, message = "つぶやきは140文字以内で入力してください")
 		private String content;
 
-		public BoardForm() {
+          public BoardForm() {
 
-		}
-		public BoardForm( String title, String content) {
-			super();
-			this.title = title;
-			this.content = content;
+          }
+          public BoardForm( String title, String content) {
+        	  super();
+        	  this.title = title;
+        	  this.content = content;
 
-		}
+          }
 
-		public String getTitle() {
-			return title;
-		}
-		public void setTitle(String title) {
-			this.title = title;
-		}
-		public String getContent() {
-			return content;
-		}
-		public void setContent(String content) {
-			this.content = content;
-		}
+          public String getTitle() {
+        	  return title;
+          }
+          public void setTitle(String title) {
+        	  this.title = title;
+          }
+          public String getContent() {
+        	  return content;
+          }
+          public void setContent(String content) {
+        	  this.content = content;
+          }
 
 
 	}
