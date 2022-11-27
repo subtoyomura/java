@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,10 @@ public class BoardController {
 	public String create(BoardForm boardForm, Model view) {
 		return "create";
 	}
+	@PostMapping("/create")
+	public String createGoBack(BoardForm boardForm, Model view) {
+		return "create";
+	}
 
 	@PostMapping("/create/confirm")
 	public String createConfirm(@Validated BoardForm boardForm, BindingResult result, Model view) {
@@ -50,7 +55,7 @@ public class BoardController {
 		}
 		return"create_confirm";
 	}
-	@PostMapping("/")
+	@PostMapping("/store")
 	public String store(@Validated BoardForm boardForm,
 			BindingResult result,
 			Model view,
@@ -58,10 +63,17 @@ public class BoardController {
 
 		if(result.hasErrors()) {
 			view.addAttribute("title", "Inquiry Form");
-			return "/create_confirm";
+			return "create_confirm";
 		}
 
-		boardService.saveer(boardForm);
+		LocalDateTime nowTime = LocalDateTime.now();
+
+		Board board = new Board();
+		board.setTitle(boardForm.getTitle());
+		board.setContent(boardForm.getContent());
+		board.setCreatedAt(nowTime);
+		board.setUpdatedAt(nowTime);
+		boardService.save(board);
 
 		redirectAttributes.addFlashAttribute("store", "つぶやきの登録に成功しました");
 
