@@ -22,7 +22,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<Board> findAll() {
-		String sql ="select * from boards";
+		String sql ="select * from boards ORDER BY id DESC";
 		List<Map<String,Object>>results = jdbcTemplate.queryForList(sql);
 		List<Board> boards = new ArrayList<Board>();
 		for(Map<String,Object>result:results) {

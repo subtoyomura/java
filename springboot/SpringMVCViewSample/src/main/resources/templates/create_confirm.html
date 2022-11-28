@@ -25,12 +25,16 @@
 				<input class="form-control" id="exampleFormControlInput1"
 					type="text" th:value="*{title}" aria-label="Disabled input example"
 					name="title" disabled>
+					<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+					style="color: red"></span>
 			</div>
 			<div class="mb-3">
 				<label for="exampleFormControlTextarea1" class="form-label">つぶやき</label>
 				<textarea class="form-control" id="exampleFormControlTextarea1"
 					rows="3" th:field="*{content}" aria-label="Disabled input example"
 					disabled></textarea>
+					<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+					style="color: red"></span>
 			</div>
 			<div>
 				<form method="post" th:action="@{/board/create}">
