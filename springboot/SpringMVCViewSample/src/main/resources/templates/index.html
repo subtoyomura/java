@@ -10,8 +10,9 @@
 <title>Insert title here</title>
 <nav class="navbar navber-light p-3 mb-2 bg-secondary">
 	<div class="container-fluid">
-		<a class="navbar-brand text-white">Simple Board</a>
-		<a th:href="@{/board/create}" class="btn btn-primary" role="button">つぶやき登録</a></button>
+		<a class="navbar-brand text-white">Simple Board</a> <a
+			th:href="@{/board/create}" class="btn btn-primary" role="button">つぶやき登録</a>
+		</button>
 
 	</div>
 </nav>
@@ -24,8 +25,10 @@
 
 
 		<h1 class="text-center m-5">タイムライン</h1>
-<div class="list-group-item-success" style="vertical-align: middle"  th:text="${store}" ></div>
-
+		<div th:unless="${#strings.isEmpty(complete)}">
+			<div class="alert alert-success" style="vertical-align: middle"
+				th:text="${complete}"></div>
+		</div>
 		<table class="table">
 			<thead class="text-dark m-5 p-4 mb-2 bg-light ">
 				<tr>
@@ -43,7 +46,8 @@
 				<td style="vertical-align: middle; text-align: center"
 					th:text="|${#temporals.format(board.updatedAt, 'yyyy/M/d h:mm')}"></td>
 
-				<td style="vertical-align: middle; text-align: center"><a th:href="@{/board/show/{id}(id=*{id})}"
+				<td style="vertical-align: middle; text-align: center"><a
+					th:href="@{/board/show/{id}(id=*{id})}"
 					class="btn btn-outline-info" role="button">みる</a></td>
 
 			</tr>

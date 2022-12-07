@@ -75,7 +75,7 @@ public class BoardController {
 		board.setUpdatedAt(nowTime);
 		boardService.save(board);
 
-		redirectAttributes.addFlashAttribute("store", "つぶやきの登録に成功しました");
+		redirectAttributes.addFlashAttribute("complete", "つぶやきの登録に成功しました");
 
 		return "redirect:/board/index";
 	}
