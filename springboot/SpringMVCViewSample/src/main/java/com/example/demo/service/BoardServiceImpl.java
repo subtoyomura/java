@@ -25,5 +25,7 @@ public class BoardServiceImpl implements BoardService {
 	public void save(Board board) {
 		boardDao.insert(board);
 	}
-
+//public void update(Board board) {
+	//boardDao.update(board);
+//}
 }

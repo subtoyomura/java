@@ -58,7 +58,7 @@ public class BoardDaoImpl implements BoardDao {
 				board.getUpdatedAt());
 	}
 	//@Override
-	//public void update(BoardForm boardForm) {
+	//public void update(Board board) {
 		//jdbcTemplate.update("INSERT INTO boards "
 				//+ //"(id,title, content)"
 				//+ //"Values(?,?,?)",

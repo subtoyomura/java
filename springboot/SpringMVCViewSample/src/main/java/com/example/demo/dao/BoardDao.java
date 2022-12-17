@@ -11,4 +11,5 @@ public interface BoardDao {
 	List<Board> findAll();
 	Board findByld(int id);
 	void insert(Board board);
+	//void update(Board board);
 }

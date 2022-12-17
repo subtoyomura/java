@@ -80,4 +80,54 @@ public class BoardController {
 		return "redirect:/board/index";
 	}
 
+
+
+
+
+
+
+
+
+	@GetMapping("/board/edit/{id}")
+	public String edit(@PathVariable BoardForm boardForm, int id,Model view) {
+		Board board = boardService.getBoard(id);
+		view.addAttribute("board",board);
+		return "edit";
+	}
+	@PostMapping("/board/edit/confirm")
+	public String editConfirm(@Validated BoardForm boardForm, BindingResult result,int id, Model view) {
+		if(result.hasErrors()) {
+			return "edit";
+		}
+		return"edit_confirm";
+	}
+	@PostMapping("/board/edit/{id}")
+	public String editGoBack(BoardForm boardForm,int id, Model view) {
+		return "edit";
+	}
+
+	@PostMapping("/board/update")
+	public String update(@Validated BoardForm boardForm,
+			BindingResult result,
+			int id,
+			Model view,
+			RedirectAttributes redirectAttributes) {
+
+		if(result.hasErrors()) {
+			return "edit_confirm";
+		}
+
+		LocalDateTime nowTime = LocalDateTime.now();
+
+		Board board = new Board();
+		board.setTitle(boardForm.getTitle());
+		board.setContent(boardForm.getContent());
+		board.setCreatedAt(nowTime);
+		board.setUpdatedAt(nowTime);
+		boardService.save(board);
+
+		redirectAttributes.addFlashAttribute("complete", "つぶやきの登録に成功しました");
+
+		return "redirect:/board/index";
+	}
 }
